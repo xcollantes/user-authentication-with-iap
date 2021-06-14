@@ -37,7 +37,7 @@ def audience():
     global AUDIENCE
 
     if AUDIENCE is None:
-        project_id = os.getenv('GOOGLE_CLOUD_PROJECT', None)
+        project_id = "learnings-69420"
 
         endpoint = 'http://metadata.google.internal'
         path = '/computeMetadata/v1/project/numeric-project-id'
@@ -71,4 +71,4 @@ def user():
         audience=audience()
     )
 
-    return info['email'], info['sub']
+    return info

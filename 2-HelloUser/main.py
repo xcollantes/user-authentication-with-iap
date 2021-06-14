@@ -29,10 +29,12 @@ def set_response_headers(response):
 def say_hello():
     user_email = request.headers.get('X-Goog-Authenticated-User-Email')
     user_id = request.headers.get('X-Goog-Authenticated-User-ID')
+    headers = request.headers
 
     page = render_template('index.html',
         email=user_email,
-        id=user_id)
+        id=user_id,
+        headers=headers)
     return page
 
 @app.route('/privacy', methods=['GET'])

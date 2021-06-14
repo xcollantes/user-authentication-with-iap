@@ -31,13 +31,16 @@ def say_hello():
     user_email = request.headers.get('X-Goog-Authenticated-User-Email')
     user_id = request.headers.get('X-Goog-Authenticated-User-ID')
 
-    verified_email, verified_id = user()
+    info = user()
+    verified_email = info['email']
+    verified_id = info['sub']
 
     page = render_template('index.html',
         email=user_email,
         id=user_id,
         verified_email=verified_email,
-        verified_id=verified_id)
+        verified_id=verified_id,
+        info=info)
     return page
 
 @app.route('/privacy', methods=['GET'])
